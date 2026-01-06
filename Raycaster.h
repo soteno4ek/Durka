@@ -1,4 +1,4 @@
-#ifndef RAYCASTER_H
+п»ї#ifndef RAYCASTER_H
 #define RAYCASTER_H
 
 #include <SFML/Graphics.hpp>
@@ -15,7 +15,7 @@ private:
     sf::RenderWindow& window;
     const Map& map;
     int screenWidth, screenHeight;
-    sf::RectangleShape hurtOverlay; // Эффект крови при получении урона
+    sf::RectangleShape hurtOverlay; // Р­С„С„РµРєС‚ РєСЂРѕРІРё РїСЂРё РїРѕР»СѓС‡РµРЅРёРё СѓСЂРѕРЅР°
     sf::Clock hurtTimer;
     bool showHurtEffect;
 };

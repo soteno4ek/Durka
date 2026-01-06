@@ -1,14 +1,14 @@
-#ifndef PLAYER_H
+п»ї#ifndef PLAYER_H
 #define PLAYER_H
 
 class Map;
 
 class Player {
 public:
-    float x, y, angle;  // Позиция и направление взгляда
+    float x, y, angle;  // РџРѕР·РёС†РёСЏ Рё РЅР°РїСЂР°РІР»РµРЅРёРµ РІР·РіР»СЏРґР°
     float speed;
     float baseSpeed;
-    bool hitSoft;   // Флаг столкновения с мягкой стеной
+    bool hitSoft;   // Р¤Р»Р°Рі СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏ СЃ РјСЏРіРєРѕР№ СЃС‚РµРЅРѕР№
 
     Player(float startX, float startY);
     void moveForward(float deltaTime, const Map& map);

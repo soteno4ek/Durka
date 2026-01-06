@@ -1,4 +1,4 @@
-#include "Game.h"
+п»ї#include "Game.h"
 
 #include "Map.h"
 #include "Player.h"
@@ -17,19 +17,19 @@ Game::Game(sf::RenderWindow& window)
     maxHealth(100.0f),
     playerIsHurt(false) {
 
-    // Инициализация центра экрана для управления мышью
+    // РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ С†РµРЅС‚СЂР° СЌРєСЂР°РЅР° РґР»СЏ СѓРїСЂР°РІР»РµРЅРёСЏ РјС‹С€СЊСЋ
     centerMouse = sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2);
     window.setMouseCursorVisible(false);
     sf::Mouse::setPosition(centerMouse, window);
 
-    // Создание объектов игры
+    // РЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚РѕРІ РёРіСЂС‹
     player = new Player(1.5f, 1.5f);
     map = new Map(10, 10);
     raycaster = new Raycaster(window, *map);
 
     map->generateRandom(roomCount);
 
-    // Загрузка шрифта с проверкой
+    // Р—Р°РіСЂСѓР·РєР° С€СЂРёС„С‚Р° СЃ РїСЂРѕРІРµСЂРєРѕР№
     bool fontLoaded = font.loadFromFile("C:/Windows/Fonts/arial.ttf");
     if (!fontLoaded) {
         fontLoaded = font.loadFromFile("C:/Windows/Fonts/times.ttf");
@@ -95,7 +95,7 @@ void Game::update(float deltaTime) {
         window.setMouseCursorVisible(true);
     }
 
-    // Проверка выхода из комнаты (через мягкую стену)
+    // РџСЂРѕРІРµСЂРєР° РІС‹С…РѕРґР° РёР· РєРѕРјРЅР°С‚С‹ (С‡РµСЂРµР· РјСЏРіРєСѓСЋ СЃС‚РµРЅСѓ)
     if (player->hitSoft && !gameEnded) {
         player->hitSoft = false;
         roomCount++;
@@ -110,7 +110,7 @@ void Game::update(float deltaTime) {
         }
     }
 
-    // Регенерация здоровья
+    // Р РµРіРµРЅРµСЂР°С†РёСЏ Р·РґРѕСЂРѕРІСЊСЏ
     if (playerHealth < maxHealth && !gameEnded) {
         playerHealth += 0.3f * deltaTime;
         if (playerHealth > maxHealth) playerHealth = maxHealth;
@@ -216,7 +216,7 @@ void Game::renderHUD() {
     float healthPercent = playerHealth / maxHealth;
     healthBar.setSize(sf::Vector2f(200 * healthPercent, 20));
 
-    // Изменение цвета полоски в зависимости от здоровья
+    // РР·РјРµРЅРµРЅРёРµ С†РІРµС‚Р° РїРѕР»РѕСЃРєРё РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ Р·РґРѕСЂРѕРІСЊСЏ
     if (healthPercent > 0.5f) {
         healthBar.setFillColor(sf::Color::Green);
     }
@@ -240,7 +240,7 @@ void Game::renderHUD() {
     window.draw(healthText);
     window.draw(roomText);
 
-    // Предупреждение при низком здоровье (мигающий текст)
+    // РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РїСЂРё РЅРёР·РєРѕРј Р·РґРѕСЂРѕРІСЊРµ (РјРёРіР°СЋС‰РёР№ С‚РµРєСЃС‚)
     if (playerHealth < 30 && !gameWon && !gameLost) {
         sf::Text warning("WARNING: LOW HEALTH!", font, 18);
         warning.setPosition(300, 560);
@@ -254,7 +254,7 @@ void Game::renderHUD() {
     }
 }
 
-// Обработка ввода пользователя
+// РћР±СЂР°Р±РѕС‚РєР° РІРІРѕРґР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 void Game::handleInput(float deltaTime) {
     sf::Event event;
     while (window.pollEvent(event)) {
@@ -351,7 +351,7 @@ void Game::handleInput(float deltaTime) {
 
 void Game::generateNewRoom() {
     map->generateRandom(roomCount);
-    // Возвращаем игрока в центр новой комнаты
+    // Р’РѕР·РІСЂР°С‰Р°РµРј РёРіСЂРѕРєР° РІ С†РµРЅС‚СЂ РЅРѕРІРѕР№ РєРѕРјРЅР°С‚С‹
     player->x = map->width / 2.0f;
     player->y = map->height / 2.0f;
     player->angle = 0.0f;

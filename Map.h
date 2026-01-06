@@ -1,4 +1,4 @@
-#ifndef MAP_H
+п»ї#ifndef MAP_H
 #define MAP_H
 
 #include <vector>
@@ -13,13 +13,13 @@ class Map {
 public:
     int width, height;
     int softSide;
-    std::vector<std::vector<int>> grid; // 2D сетка стен (0 - проходимо, 1 - стена)
-    std::vector<Sanitarian> sanitarians;    // Список санитаров на уровне
+    std::vector<std::vector<int>> grid; // 2D СЃРµС‚РєР° СЃС‚РµРЅ (0 - РїСЂРѕС…РѕРґРёРјРѕ, 1 - СЃС‚РµРЅР°)
+    std::vector<Sanitarian> sanitarians;    // РЎРїРёСЃРѕРє СЃР°РЅРёС‚Р°СЂРѕРІ РЅР° СѓСЂРѕРІРЅРµ
 
     Map(int w, int h);
     void generateRandom(int roomCount);
-    bool isWall(float x, float y) const;    // Проверка на стену
-    bool isCell(float x, float y) const;    // Проверка в пределах карты
+    bool isWall(float x, float y) const;    // РџСЂРѕРІРµСЂРєР° РЅР° СЃС‚РµРЅСѓ
+    bool isCell(float x, float y) const;    // РџСЂРѕРІРµСЂРєР° РІ РїСЂРµРґРµР»Р°С… РєР°СЂС‚С‹
     void updateSanitarians(float playerX, float playerY, float deltaTime, float& playerHealth, bool gameEnded);
 };
 

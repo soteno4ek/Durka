@@ -1,4 +1,4 @@
-#include "Map.h"
+п»ї#include "Map.h"
 
 #include <cstdlib>
 #include <ctime>
@@ -6,7 +6,7 @@
 #include <iostream>
 
 Map::Map(int w, int h) : width(w), height(h), softSide(0) {
-    grid.resize(height, std::vector<int>(width, 0));  // Инициализация сетки нулями
+    grid.resize(height, std::vector<int>(width, 0));  // РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃРµС‚РєРё РЅСѓР»СЏРјРё
     srand(static_cast<unsigned int>(time(0)));
 }
 
@@ -14,10 +14,10 @@ void Map::generateRandom(int roomCount) {
 
     for (auto& row : grid) std::fill(row.begin(), row.end(), 0);
 
-    // Случайно выбираем сторону с мягкой стеной (0-верх, 1-низ, 2-лево, 3-право)
+    // РЎР»СѓС‡Р°Р№РЅРѕ РІС‹Р±РёСЂР°РµРј СЃС‚РѕСЂРѕРЅСѓ СЃ РјСЏРіРєРѕР№ СЃС‚РµРЅРѕР№ (0-РІРµСЂС…, 1-РЅРёР·, 2-Р»РµРІРѕ, 3-РїСЂР°РІРѕ)
     softSide = rand() % 4;
 
-    // Создаем комнату со стенами по краям и одной мягкой стеной
+    // РЎРѕР·РґР°РµРј РєРѕРјРЅР°С‚Сѓ СЃРѕ СЃС‚РµРЅР°РјРё РїРѕ РєСЂР°СЏРј Рё РѕРґРЅРѕР№ РјСЏРіРєРѕР№ СЃС‚РµРЅРѕР№
     if (softSide == 0) {
         for (int i = 0; i < width; ++i) grid[0][i] = 0;
         for (int i = 1; i < height - 1; ++i) {
@@ -51,7 +51,7 @@ void Map::generateRandom(int roomCount) {
         for (int i = 0; i < height; ++i) grid[i][0] = 1;
     }
 
-    // Добавляем случайные внутренние стены для усложнения
+    // Р”РѕР±Р°РІР»СЏРµРј СЃР»СѓС‡Р°Р№РЅС‹Рµ РІРЅСѓС‚СЂРµРЅРЅРёРµ СЃС‚РµРЅС‹ РґР»СЏ СѓСЃР»РѕР¶РЅРµРЅРёСЏ
     for (int i = 0; i < 3 + roomCount; i++) {
         int wallX = 2 + rand() % (width - 4);
         int wallY = 2 + rand() % (height - 4);
@@ -62,7 +62,7 @@ void Map::generateRandom(int roomCount) {
 
     sanitarians.clear();
 
-    // Количество санитаров увеличивается с каждой пройденной комнатой
+    // РљРѕР»РёС‡РµСЃС‚РІРѕ СЃР°РЅРёС‚Р°СЂРѕРІ СѓРІРµР»РёС‡РёРІР°РµС‚СЃСЏ СЃ РєР°Р¶РґРѕР№ РїСЂРѕР№РґРµРЅРЅРѕР№ РєРѕРјРЅР°С‚РѕР№
     int sanitCount = 1 + roomCount / 2;
     if (sanitCount > 5) sanitCount = 5;
 
@@ -71,13 +71,13 @@ void Map::generateRandom(int roomCount) {
         sanit.active = true;
         sanit.speed = 1.5f + roomCount * 0.2f;
 
-        // Размещаем санитара в случайном углу комнаты
+        // Р Р°Р·РјРµС‰Р°РµРј СЃР°РЅРёС‚Р°СЂР° РІ СЃР»СѓС‡Р°Р№РЅРѕРј СѓРіР»Сѓ РєРѕРјРЅР°С‚С‹
         int corner = rand() % 4;
         switch (corner) {
-        case 0: sanit.x = 1.5f; sanit.y = 1.5f; break;  // Левый верхний
-        case 1: sanit.x = width - 1.5f; sanit.y = 1.5f; break;  // Правый верхний
-        case 2: sanit.x = 1.5f; sanit.y = height - 1.5f; break; // Левый нижний
-        case 3: sanit.x = width - 1.5f; sanit.y = height - 1.5f; break; // Правый нижний
+        case 0: sanit.x = 1.5f; sanit.y = 1.5f; break;  // Р›РµРІС‹Р№ РІРµСЂС…РЅРёР№
+        case 1: sanit.x = width - 1.5f; sanit.y = 1.5f; break;  // РџСЂР°РІС‹Р№ РІРµСЂС…РЅРёР№
+        case 2: sanit.x = 1.5f; sanit.y = height - 1.5f; break; // Р›РµРІС‹Р№ РЅРёР¶РЅРёР№
+        case 3: sanit.x = width - 1.5f; sanit.y = height - 1.5f; break; // РџСЂР°РІС‹Р№ РЅРёР¶РЅРёР№
         }
 
         sanitarians.push_back(sanit);
@@ -104,7 +104,7 @@ void Map::updateSanitarians(float playerX, float playerY, float deltaTime, float
     for (auto& sanit : sanitarians) {
         if (!sanit.active) continue;
 
-        // Вычисляем вектор направления к игроку
+        // Р’С‹С‡РёСЃР»СЏРµРј РІРµРєС‚РѕСЂ РЅР°РїСЂР°РІР»РµРЅРёСЏ Рє РёРіСЂРѕРєСѓ
         float dx = playerX - sanit.x;
         float dy = playerY - sanit.y;
         float dist = sqrt(dx * dx + dy * dy);

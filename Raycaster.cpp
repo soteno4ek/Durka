@@ -1,4 +1,4 @@
-#define _USE_MATH_DEFINES
+п»ї#define _USE_MATH_DEFINES
 #include "Raycaster.h"
 
 #include <cmath>
@@ -8,23 +8,23 @@ Raycaster::Raycaster(sf::RenderWindow& window, const Map& map)
     screenWidth = window.getSize().x;
     screenHeight = window.getSize().y;
 
-    // Инициализация эффекта крови (красный полупрозрачный прямоугольник)
+    // РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЌС„С„РµРєС‚Р° РєСЂРѕРІРё (РєСЂР°СЃРЅС‹Р№ РїРѕР»СѓРїСЂРѕР·СЂР°С‡РЅС‹Р№ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє)
     hurtOverlay.setSize(sf::Vector2f(static_cast<float>(screenWidth),
         static_cast<float>(screenHeight)));
     hurtOverlay.setFillColor(sf::Color(255, 0, 0, 100));
 }
 
 void Raycaster::render(const Player& player, const Map& map, float playerHealth, bool isHurt) {
-    float fov = M_PI / 2.0f;    // Поле зрения 90 градусов
+    float fov = M_PI / 2.0f;    // РџРѕР»Рµ Р·СЂРµРЅРёСЏ 90 РіСЂР°РґСѓСЃРѕРІ
 
     for (int x = 0; x < screenWidth; ++x) {
-        // Вычисляем угол луча относительно направления взгляда игрока
+        // Р’С‹С‡РёСЃР»СЏРµРј СѓРіРѕР» Р»СѓС‡Р° РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РЅР°РїСЂР°РІР»РµРЅРёСЏ РІР·РіР»СЏРґР° РёРіСЂРѕРєР°
         float rayAngle = player.angle - fov / 2.0f + (static_cast<float>(x) / static_cast<float>(screenWidth)) * fov;
 
         float rayX = player.x;
         float rayY = player.y;
 
-        // Приращения для движения луча
+        // РџСЂРёСЂР°С‰РµРЅРёСЏ РґР»СЏ РґРІРёР¶РµРЅРёСЏ Р»СѓС‡Р°
         float rayCos = static_cast<float>(cos(rayAngle)) * 0.01f;
         float raySin = static_cast<float>(sin(rayAngle)) * 0.01f;
 

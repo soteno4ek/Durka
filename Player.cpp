@@ -1,4 +1,4 @@
-#define _USE_MATH_DEFINES
+п»ї#define _USE_MATH_DEFINES
 #include "Player.h"
 
 #include <cmath>
@@ -17,9 +17,9 @@ void Player::moveForward(float deltaTime, const Map& map) {
     int ix = static_cast<int>(newX);
     int iy = static_cast<int>(newY);
 
-    // Проверяем столкновение со стеной
+    // РџСЂРѕРІРµСЂСЏРµРј СЃС‚РѕР»РєРЅРѕРІРµРЅРёРµ СЃРѕ СЃС‚РµРЅРѕР№
     if (map.isWall(newX, newY)) {
-        // Если это мягкая стена (выход из комнаты), проходим через нее
+        // Р•СЃР»Рё СЌС‚Рѕ РјСЏРіРєР°СЏ СЃС‚РµРЅР° (РІС‹С…РѕРґ РёР· РєРѕРјРЅР°С‚С‹), РїСЂРѕС…РѕРґРёРј С‡РµСЂРµР· РЅРµРµ
         if ((ix < 0 && map.softSide == 2) ||
             (ix >= map.width && map.softSide == 3) ||
             (iy < 0 && map.softSide == 0) ||
@@ -105,7 +105,7 @@ void Player::strafeRight(float deltaTime, const Map& map) {
     }
 }
 
-// Движение в произвольном направлении
+// Р”РІРёР¶РµРЅРёРµ РІ РїСЂРѕРёР·РІРѕР»СЊРЅРѕРј РЅР°РїСЂР°РІР»РµРЅРёРё
 void Player::moveInDirection(float dirAngle, float deltaTime, const Map& map) {
     float moveDistance = speed * deltaTime;
     float newX = x + static_cast<float>(cos(dirAngle)) * moveDistance;

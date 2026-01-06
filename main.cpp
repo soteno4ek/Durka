@@ -1,4 +1,4 @@
-#include <SFML/Graphics.hpp>
+п»ї#include <SFML/Graphics.hpp>
 #include <locale>
 #include <iostream>
 #include <string>
@@ -56,7 +56,7 @@ int main() {
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "Escape from Durka");
 
-    // Проверка успешности создания окна
+    // РџСЂРѕРІРµСЂРєР° СѓСЃРїРµС€РЅРѕСЃС‚Рё СЃРѕР·РґР°РЅРёСЏ РѕРєРЅР°
     if (!window.isOpen()) {
         std::cout << "ERROR: Failed to create game window!\n";
         std::cout << "Make sure you have graphics drivers installed.\n";
